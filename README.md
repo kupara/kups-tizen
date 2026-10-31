@@ -5,11 +5,11 @@ repository, included here as a [git submodule](https://git-scm.com/book/en/v2/Gi
 
 | Folder | Repository | What it is |
 | --- | --- | --- |
-| `monitor/` | [kups-tizen-monitor](https://github.com/kupara/kups-tizen-monitor) | Glass Home (Kups Home) for the monitor TV: home screen, photo website, TV tools |
-| `runinga/` | [kups-tizen-runinga](https://github.com/kupara/kups-tizen-runinga) | Glass Home for the Runinga TV, with that TV's logo and assets |
+| `monitor-home/` | [kups-tizen-monitor](https://github.com/kupara/kups-tizen-monitor) | Glass Home (Kups Home) for the monitor TV: home screen, photo website, TV tools |
+| `runinga-home/` | [kups-tizen-runinga](https://github.com/kupara/kups-tizen-runinga) | Glass Home for the Runinga TV, with that TV's logo and assets |
 | `utube/` | [kups-tizen-utube](https://github.com/kupara/kups-tizen-utube) | uTube (TznTube): a patched TizenBrew that opens TizenTube straight away, plus a dev bridge, launcher and splash |
 
-`monitor/` and `runinga/` start from the same Glass Home code and are kept as
+`monitor-home/` and `runinga-home/` start from the same Glass Home code and are kept as
 separate copies on purpose, so each TV can change without affecting the other.
 
 ## Get it
@@ -29,14 +29,14 @@ git submodule update --init
 Secrets, certificates and build output are not in git (see
 [What isn't in git](#what-isnt-in-git)), so a fresh clone needs them recreated:
 
-- **monitor / runinga**: follow `glass-home/docs/INSTALL.md` in that folder.
+- **monitor-home / runinga-home**: follow `docs/INSTALL.md` in that folder.
   In short: `cp scripts/tizen-env.example.sh scripts/tizen-env.sh`, fill in the
   TV's IP and device ID, make the Samsung certificate (`scripts/make-cert.sh`),
   then `scripts/build.sh` and `scripts/install.sh`. `scripts/build.sh` makes the
   app/service shared key (`app/js/local-key.js`) on its first run.
 - **utube**: `tools/build-install.sh` builds and signs `dist/TznTube.wgt`
   (add `install` to put it on the TV). It reads the Tizen settings from
-  `../runinga/glass-home/scripts/tizen-env.sh`, so set up runinga first. The
+  `../runinga-home/scripts/tizen-env.sh`, so set up runinga-home first. The
   dev bridge's allowed Mac IP is in `devbridge/service/index.js`.
 
 ## Working with the submodules
@@ -44,7 +44,7 @@ Secrets, certificates and build output are not in git (see
 Each folder is its own repository: commit and push inside it as usual.
 
 ```sh
-cd monitor
+cd monitor-home
 git add -A && git commit -m "..." && git push
 ```
 
@@ -52,7 +52,7 @@ Then record the new commit in kups-tizen:
 
 ```sh
 cd ..
-git add monitor && git commit -m "Update monitor" && git push
+git add monitor-home && git commit -m "Update monitor-home" && git push
 ```
 
 Pull everything, including the submodules:
@@ -62,7 +62,7 @@ git pull --recurse-submodules
 git submodule update --init
 ```
 
-`git status` here shows `modified: monitor (new commits)` when a submodule has
+`git status` here shows `modified: monitor-home (new commits)` when a submodule has
 commits that kups-tizen doesn't point at yet.
 
 ## What isn't in git
@@ -79,6 +79,3 @@ Each repository's `.gitignore` keeps these out:
   `service-nextgen/service/dist` bundles *are* committed, because they hold
   the patches)
 - Personal media: copied macOS wallpapers, third-party app logos, your logo
-
-Local folders next to these (`backups/`, `custom/`, `tizenbrew-fixed/`) are
-ignored by this repository and stay on this Mac only.

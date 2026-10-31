@@ -1,8 +1,3 @@
-# Local-only folders, not part of kups-tizen
-/backups/
-/custom/
-/tizenbrew-fixed/
-
 # Secrets and keys
 .env
 .env.*

@@ -1,8 +1,8 @@
-[submodule "monitor"]
-	path = monitor
+[submodule "monitor-home"]
+	path = monitor-home
 	url = git@github.com:kupara/kups-tizen-monitor.git
-[submodule "runinga"]
-	path = runinga
+[submodule "runinga-home"]
+	path = runinga-home
 	url = git@github.com:kupara/kups-tizen-runinga.git
 [submodule "utube"]
 	path = utube
