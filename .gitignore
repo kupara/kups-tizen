@@ -1,0 +1,18 @@
+# Local-only folders, not part of kups-tizen
+/backups/
+/custom/
+/tizenbrew-fixed/
+
+# Secrets and keys
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.pwd
+*.crt
+*.csr
+.claude/settings.local.json
+
+.DS_Store

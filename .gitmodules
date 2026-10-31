@@ -1,0 +1,9 @@
+[submodule "monitor"]
+	path = monitor
+	url = git@github.com:kupara/kups-tizen-monitor.git
+[submodule "runinga"]
+	path = runinga
+	url = git@github.com:kupara/kups-tizen-runinga.git
+[submodule "utube"]
+	path = utube
+	url = git@github.com:kupara/kups-tizen-utube.git
